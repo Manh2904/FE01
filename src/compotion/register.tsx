@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Breadcrumb from "./Breadcrumb";
+import { UserRegister } from "../interface/user";
+import { userRegister } from "../sevies/user";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +14,30 @@ const Register = () => {
     { nhan: 'Trang Chủ', duongDan: '/' },
     { nhan: 'Đăng Ký', duongDan: '/register' },
   ];
-
+  const [fullName, setFullName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const user = await userRegister({
+      fullname: fullName,
+      email: email,
+      password: password,
+    } as UserRegister);
+    // alert("Bạn đã đăng kí thành công");
+    console.log(user);
+    if (!user.status) {
+        setMessage(user.message);
+        toast.warning(message)
+    }
+    else{
+        toast.success('Bạn đã đăng kí thành công')
+        setTimeout(()=>{
+            window.location.href= "/login";
+        },3000)
+    }
+  };
   return (
     <>
       <Breadcrumb items={duongDan} />
@@ -27,23 +52,25 @@ const Register = () => {
                 <h2 className="my-4">Đăng Ký vào Exclusive</h2>
                 <span>Enter your details below</span>
               </div>
-              <form className="form">
+              <form className="form" onSubmit={handleRegister}>
                 <div className="email my-3">
                   <input
                     type="text"
                     className="form-control border-0 border-bottom"
                     name=""
-                    placeholder="Full Name"
+                    placeholder="full name"
+                    onChange={(e) => setFullName(e.target.value)}
                     style={{ width: "350px" }}
                   />
                 </div>
                 <div className="email my-3">
-                  <input
+                <input
                     type="email"
                     className="form-control border-0 border-bottom"
                     name=""
-
-                    placeholder="Email"
+                    
+                    placeholder="email"
+                    onChange={(e) => setEmail(e.target.value)}
                     style={{ width: "350px" }}
                   />
                 </div>
@@ -58,11 +85,12 @@ const Register = () => {
                   />
                 </div>
                 <div className="pass my-2">
-                                    <input type={showPassword ? "text" : "password"} className="form-control border-0 border-bottom" name="" id="password"  placeholder="Password" style={{ width: '350px' }} />
+                                    <input type={showPassword ? "text" : "password"} className="form-control border-0 border-bottom" name=""  onChange={(e) => setPassword(e.target.value)} id="password"  placeholder="Password" style={{ width: '350px' }} />
                                     <div className="login-form__checkbox-container">
                             <input
                                 type="checkbox"
                                 id="show-password"
+                               
                                 onChange={togglePasswordVisibility}
                                 className="login-form__checkbox"
                             />

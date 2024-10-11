@@ -1,9 +1,11 @@
 import { useState } from "react";
 import '/src/assets/css/style.css'
 import '../assets/css/login.css'
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import Breadcrumb from "./Breadcrumb";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
+import { UserLogin } from "../interface/user";
+import { userLogin } from "../sevies/user";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -15,6 +17,29 @@ const Login = () => {
         { nhan: 'Trang Chủ', duongDan: '/' },
         { nhan: 'Đăng Nhập', duongDan: 'login' },
     ];
+    const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const user = await userLogin({
+      email: email,
+      password: password,
+    } as UserLogin);
+    if (!user.status) {
+        toast.warning(user.message)
+    }
+    else{
+      localStorage.setItem('user', JSON.stringify({
+        user: user.userdata,
+        token: user.token
+      }))
+        toast.success('Bạn đã đăng nhập thành công vui lòng đơi 3s để chuyển trang')
+        setTimeout(()=>{
+            window.location.href= "/admin";
+        },3000)
+        console.log(user);
+    }
+  };
     return (
         <> <Breadcrumb items={duongDan} />
             <div className="container my-5">
@@ -28,13 +53,13 @@ const Login = () => {
                                 <h2 className="my-4">Đăng nhập vào Exclusive</h2>
                                 <span>Enter your details below</span>
                             </div>
-                            <form className="form" >
+                            <form className="form"  onSubmit={handleLogin} >
                                 <div className="email my-3 ">
-                                    <input type="email" className="form-control border-0 border-bottom " name="" placeholder="Email or Phone Number" style={{ width: '350px' }} />
+                                    <input type="email" className="form-control border-0 border-bottom " name="" onChange={(e) => setEmail(e.target.value)} placeholder="Email or Phone Number" style={{ width: '350px' }} />
 
                                 </div>
                                 <div className="pass my-2">
-                                    <input type={showPassword ? "text" : "password"} className="form-control border-0 border-bottom" name="" id="password" placeholder="Password" style={{ width: '350px' }} />
+                                    <input type={showPassword ? "text" : "password"} className="form-control border-0 border-bottom" name=""  onChange={(e) => setPassword(e.target.value)} id="password" placeholder="Password" style={{ width: '350px' }} />
                                     <div className="login-form__checkbox-container">
                                         <input
                                             type="checkbox"

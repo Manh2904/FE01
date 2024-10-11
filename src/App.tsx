@@ -10,8 +10,12 @@ import Pay from './pages/Website/home/pay';
 import Bill from './pages/Website/home/bill';
 import DetailBill from './pages/Website/home/detailBill';
 import SingleProduct from './compotion/singleProduct';
-
+import adminLayout from './layouts/adminLayout';
 import NotFound from './compotion/notFound';
+import HomeAdmin from './compotion/admin/homeAdmin';
+import AdminLayout from './layouts/adminLayout';
+import Listproduct from './compotion/admin/listproduct';
+import AddProduct from './compotion/admin/addProduct';
 
 
 //   return (
@@ -77,7 +81,29 @@ const routerConfig = [
         path: "/*",
         element: <NotFound />,
       },
+     
     ],
+    
+  },
+  {
+    path: "/",
+    element: <AdminLayout />,
+    children: [
+      
+        {
+          path: "/admin",
+          element: <HomeAdmin />,
+        },
+        {
+          path: "/admin/list",
+          element: <Listproduct />,
+        },
+        {
+          path: "/admin/add",
+          element: <AddProduct />,
+        },
+      
+    ]
   },
 ]
 
