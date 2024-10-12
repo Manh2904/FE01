@@ -1,21 +1,12 @@
-import { useEffect, useState } from "react"
-// import { getALlProduct } from "../sevies/product"
-import Footer from "./footer"
-import Header from "./header"
-import LoadListProduct from "./loadAllProduct"
-// import LoadListProduct from "./loadAllProduct"
-// import TwoListProduct from "./twoListProduct"
-// import { Product } from "../interface/product"
+import LoadListProduct from "./loadAllProduct";
+import "/src/assets/css/style.css";
 
 const Products = () => {
-
   return (
     <>
-   
-    <LoadListProduct/>
-    
+      <LoadListProduct />
     </>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

@@ -1,41 +1,18 @@
-import { useRoutes } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Home from './compotion/home';
-import 'react-toastify/dist/ReactToastify.css';
-import ClientLayout from './layouts/clientLayout';
-import Login from './compotion/login';
-import Products from './compotion/products';
-import Register from './compotion/register';
-import Pay from './pages/Website/home/pay';
-import Bill from './pages/Website/home/bill';
-import DetailBill from './pages/Website/home/detailBill';
-import SingleProduct from './compotion/singleProduct';
-
-import NotFound from './compotion/notFound';
-import Abc from './compotion/Giohang';
-
-
-
-//   return (
-//     <>
-//     <Routes>
-//       {/* <Route path='/' Component={Home} /> */}
-//       <Route path='/product' Component={Products} />
-//       <Route path='/login' Component={Login} />
-//       <Route path='/register' Component={Register} />
-//       <Route path='/single/:id' element={<SingleProduct product = {listProduct} setProduct ={setlistProduct}/>}/>
-//       {/* <Route path='/s' Component={Load} /> */}
-//       {/* <Route path='/admin' Component={HomeAdmin}/>
-//       <Route path='/admin/list'  element={<Listproduct product = {listProduct} setProduct ={setlistProduct}/>}/>
-//       <Route path='/admin/add' Component={AddProduct}/>
-//       <Route path='/admin/update/:id' Component={UpdateProduct}/> */}
-//       <Route path='*' element={<NotFound />} /> 
-//     </Routes>
-//     </>
-//   )
-// }
-
-// export default App
+import { useRoutes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./compotion/home";
+import "react-toastify/dist/ReactToastify.css";
+import ClientLayout from "./layouts/clientLayout";
+import Login from "./compotion/login";
+import Products from "./compotion/products";
+import Register from "./compotion/register";
+import Pay from "./pages/Website/home/pay";
+import Bill from "./pages/Website/home/bill";
+import DetailBill from "./pages/Website/home/detailBill";
+import SingleProduct from "./compotion/singleProduct";
+import "/src/assets/css/style.css";
+import NotFound from "./compotion/notFound";
+import Abc from "./compotion/Giohang";
 
 const routerConfig = [
   {
@@ -58,7 +35,7 @@ const routerConfig = [
         path: "/product",
         element: <Products />,
       },
-  
+
       {
         path: "/pay",
         element: <Pay />,
@@ -79,21 +56,17 @@ const routerConfig = [
         path: "/*",
         element: <NotFound />,
       },
-
     ],
   },
   {
     path: "/abc",
-    element: <Abc/>
-  }
-  
-]
+    element: <Abc />,
+  },
+];
 
 function App() {
   const routes = useRoutes(routerConfig);
-  return (
-    <>{routes}</>
-  );
+  return <>{routes}</>;
 }
 
 export default App;
