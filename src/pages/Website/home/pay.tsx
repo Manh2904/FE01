@@ -57,8 +57,13 @@ const Pay = () => {
                         </div>
 
                         <div className="price-summary">
+<<<<<<< HEAD
                             <p>Giá: <span>300.000đ</span></p>
                             <p>Mã giảm giá: <span>-10.000đ</span></p>
+=======
+                            <p>Giá Áo: <span>300.000đ</span></p>
+                            <p>Mã giảm giá: <span>-20.000đ</span></p>
+>>>>>>> b4dc6489933e69fa4cc342a86b219e099af6eae0
                             <hr />
                             <p className="total">Tổng tiền: <span>290.000đ</span></p>
                         </div>

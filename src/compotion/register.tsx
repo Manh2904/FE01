@@ -1,5 +1,10 @@
 import React, { useState } from "react";
+// import { userRegister } from "../sevies/user";
+// import { UserRegister } from "../interface/user";
+import Header from "./header";
+import Footer from "./footer";
 import { ToastContainer, toast } from "react-toastify";
+<<<<<<< HEAD
 import Breadcrumb from "./Breadcrumb";
 import { UserRegister } from "../interface/user";
 import { userRegister } from "../sevies/user";
@@ -38,9 +43,14 @@ const Register = () => {
         },3000)
     }
   };
+=======
+
+const Register = () => {
+
+  
+>>>>>>> b4dc6489933e69fa4cc342a86b219e099af6eae0
   return (
     <>
-      <Breadcrumb items={duongDan} />
       <div className="container my-5">
         <div className="row">
           <div className="col-8">
@@ -64,6 +74,7 @@ const Register = () => {
                   />
                 </div>
                 <div className="email my-3">
+<<<<<<< HEAD
                 <input
                     type="email"
                     className="form-control border-0 border-bottom"
@@ -75,16 +86,19 @@ const Register = () => {
                   />
                 </div>
                 <div className="email my-3">
+=======
+>>>>>>> b4dc6489933e69fa4cc342a86b219e099af6eae0
                   <input
                     type="text"
                     className="form-control border-0 border-bottom"
                     name=""
-
-                    placeholder="Phone Number"
+                   
+                    placeholder="Email or Phone Number"
                     style={{ width: "350px" }}
                   />
                 </div>
                 <div className="pass my-2">
+<<<<<<< HEAD
                                     <input type={showPassword ? "text" : "password"} className="form-control border-0 border-bottom" name=""  onChange={(e) => setPassword(e.target.value)} id="password"  placeholder="Password" style={{ width: '350px' }} />
                                     <div className="login-form__checkbox-container">
                             <input
@@ -103,6 +117,18 @@ const Register = () => {
                             {/* <p>Quên mật khẩu</p> */}
                         </div>
                                 </div>
+=======
+                  <input
+                    type="password"
+                    className="form-control border-0 border-bottom"
+                    name=""
+                    id="password"
+                    
+                    placeholder="Password"
+                    style={{ width: "350px" }}
+                  />
+                </div>
+>>>>>>> b4dc6489933e69fa4cc342a86b219e099af6eae0
                 <div className="row my-3">
                   <div className="col-6">
                     <button type="submit" className="btn btn-danger">
@@ -120,7 +146,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
+      <ToastContainer/>
     </>
   );
 };
